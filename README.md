@@ -14,15 +14,15 @@ This tool is for educational use only, the author will not be held responsible f
 
 -Windows Product Key Recovery
 
--Chrome Password Recovery
-
--Chrome Cookie Recovery
-
 -Textfile Output
+
+-Repeat Spread Prevention
 
 ## **Planned Features:**
 
--Repeat Spread Prevention
+-Chrome Password Recovery
+
+-Chrome Cookie Recovery
 
 -Multi-browser Recovery
 
