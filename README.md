@@ -12,13 +12,15 @@ This tool is for educational use only, I, the creator and all those associated w
 
 -Repeat Spread Prevention
 
+-Drive Autorun Exploit
+
 -System Info
 
 -Textfile Output
 
 ## **Planned Features:**
 
--Drive Autorun Exploit
+
 
 -Windows Product Key Recovery
 
