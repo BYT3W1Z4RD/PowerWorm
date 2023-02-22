@@ -10,15 +10,17 @@ This tool is for educational use only, the author will not be held responsible f
 
 -Removable Drive Spread
 
--System Info
+-Repeat Spread Prevention
 
--Windows Product Key Recovery
+-System Info
 
 -Textfile Output
 
--Repeat Spread Prevention
-
 ## **Planned Features:**
+
+-Drive Autorun Exploit
+
+-Windows Product Key Recovery
 
 -Chrome Password Recovery
 
